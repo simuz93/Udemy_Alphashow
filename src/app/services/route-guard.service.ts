@@ -7,6 +7,8 @@ import { AuthappService } from './authapp.service';
 })
 export class RouteGuardService implements CanActivate {
 
+  constructor(private BasicAuth: AuthappService, private route: Router) { }
+  
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // throw new Error("Method not implemented");
     if(!this.BasicAuth.isLogged()) {
@@ -18,5 +20,4 @@ export class RouteGuardService implements CanActivate {
     }
   }
 
-  constructor(private BasicAuth: AuthappService, private route: Router) { }
 }
